@@ -1,42 +1,88 @@
-void task6() {
-    int mat[3][3];
-    for(int i=0; i<3; i++)
-        for(int j=0; j<3; j++) cin >> mat[i][j];
-    for(int i=0; i<3; i++) {
-        for(int j=0; j<3; j++) cout << mat[i][j] << " ";
+#include <iostream>
+#include <iomanip> // для гарного виводу таблиці (setw)
+
+using namespace std;
+
+void printMatrix(int mat[5][5], int rows, int cols) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            cout << setw(4) << mat[i][j] << " ";
+        }
         cout << endl;
     }
 }
 
-void task7() {
-    int mat[4][4] = {{1,1,1,1},{2,2,2,2},{3,3,3,3},{4,4,4,4}};
-    for(int i=0; i<4; i++) {
-        int rowSum = 0;
-        for(int j=0; j<4; j++) rowSum += mat[i][j];
-        cout << "Row " << i << " sum: " << rowSum << endl;
+int main() {
+    int choice;
+    cout << "Oberit zavdannya (6-10): ";
+    cin >> choice;
+    if (choice == 6) {
+        int mat[3][3];
+        cout << "Vvedit elementy matrytsi 3x3:\n";
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++) cin >> mat[i][j];
+
+        cout << "Vasha matrytsya:\n";
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) cout << mat[i][j] << "\t";
+            cout << endl;
+        }
+    } 
+    else if (choice == 7) {
+        // Завдання 7: 4x4, сума кожного рядка
+        int mat[4][4] = {{1,2,3,4}, {5,6,7,8}, {1,1,1,1}, {2,2,2,2}};
+        for (int i = 0; i < 4; i++) {
+            int rowSum = 0;
+            for (int j = 0; j < 4; j++) rowSum += mat[i][j];
+            cout << "Sum ryadka " << i + 1 << " = " << rowSum << endl;
+        }
     }
-}
+    else if (choice == 8) {
+        // Завдання 8: 5x5, найбільший елемент та координати
+        int mat[5][5] = {0}; 
+        mat[2][3] = 99; // приклад для тесту
+        int maxVal = mat[0][0], maxR = 0, maxC = 0;
 
-void task8() {
-    int mat[5][5] = {0}; mat[2][3] = 99; // приклад
-    int maxVal = mat[0][0], r = 0, c = 0;
-    for(int i=0; i<5; i++)
-        for(int j=0; j<5; j++)
-            if(mat[i][j] > maxVal) { maxVal = mat[i][j]; r = i; c = j; }
-    cout << "Max: " << maxVal << " at (" << r << "," << c << ")" << endl;
-}
-
-void task9() {
-    int mat[4][4], mainDiag = 0, sideDiag = 0;
-    for(int i=0; i<4; i++) {
-        mainDiag += mat[i][i];
-        sideDiag += mat[i][4-1-i];
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                if (mat[i][j] > maxVal) {
+                    maxVal = mat[i][j];
+                    maxR = i;
+                    maxC = j;
+                }
+            }
+        }
+        cout << "Max: " << maxVal << " v pozytsii (" << maxR << ", " << maxC << ")" << endl;
     }
-    cout << "Main: " << mainDiag << ", Side: " << sideDiag << endl;
-}
+    else if (choice == 9) {
+        int mat[4][4] = {{1,0,0,1}, {0,1,1,0}, {0,1,1,0}, {1,0,0,1}};
+        int mainDiag = 0, sideDiag = 0;
 
-void task10() {
-    int mat[3][3] = {{1,2,3},{4,5,6},{7,8,9}}, trans[3][3];
-    for(int i=0; i<3; i++)
-        for(int j=0; j<3; j++) trans[j][i] = mat[i][j];
+        for (int i = 0; i < 4; i++) {
+            mainDiag += mat[i][i];            // Головна: i == j
+            sideDiag += mat[i][4 - 1 - i];    // Побічна: j = n - 1 - i
+        }
+        cout << "Golovna diagonal: " << mainDiag << endl;
+        cout << "Pobichna diagonal: " << sideDiag << endl;
+    }
+    else if (choice == 10) {
+        int mat[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        int trans[3][3];
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                trans[j][i] = mat[i][i]; // рядки стають стовпцями
+            }
+        }
+        cout << "Transponovana matrytsya:\n";
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) cout << trans[i][j] << " ";
+            cout << endl;
+        }
+    }
+    else {
+        cout << "Nevirnyi vybir!";
+    }
+
+    return 0;
 }
