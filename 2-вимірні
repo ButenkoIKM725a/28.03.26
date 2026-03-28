@@ -1,0 +1,42 @@
+void task6() {
+    int mat[3][3];
+    for(int i=0; i<3; i++)
+        for(int j=0; j<3; j++) cin >> mat[i][j];
+    for(int i=0; i<3; i++) {
+        for(int j=0; j<3; j++) cout << mat[i][j] << " ";
+        cout << endl;
+    }
+}
+
+void task7() {
+    int mat[4][4] = {{1,1,1,1},{2,2,2,2},{3,3,3,3},{4,4,4,4}};
+    for(int i=0; i<4; i++) {
+        int rowSum = 0;
+        for(int j=0; j<4; j++) rowSum += mat[i][j];
+        cout << "Row " << i << " sum: " << rowSum << endl;
+    }
+}
+
+void task8() {
+    int mat[5][5] = {0}; mat[2][3] = 99; // приклад
+    int maxVal = mat[0][0], r = 0, c = 0;
+    for(int i=0; i<5; i++)
+        for(int j=0; j<5; j++)
+            if(mat[i][j] > maxVal) { maxVal = mat[i][j]; r = i; c = j; }
+    cout << "Max: " << maxVal << " at (" << r << "," << c << ")" << endl;
+}
+
+void task9() {
+    int mat[4][4], mainDiag = 0, sideDiag = 0;
+    for(int i=0; i<4; i++) {
+        mainDiag += mat[i][i];
+        sideDiag += mat[i][4-1-i];
+    }
+    cout << "Main: " << mainDiag << ", Side: " << sideDiag << endl;
+}
+
+void task10() {
+    int mat[3][3] = {{1,2,3},{4,5,6},{7,8,9}}, trans[3][3];
+    for(int i=0; i<3; i++)
+        for(int j=0; j<3; j++) trans[j][i] = mat[i][j];
+}
