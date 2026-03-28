@@ -1,0 +1,53 @@
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+void task1() {
+    int arr[10], sum = 0;
+    for(int i = 0; i < 10; i++) {
+        cin >> arr[i];
+        sum += arr[i];
+    }
+    for(int i = 0; i < 10; i++) cout << arr[i] << " ";
+    cout << "\nSum: " << sum << endl;
+}
+
+void task2() {
+    int arr[15] = {5, 2, 9, 1, 5, 6, 12, 8, 3, 10, 4, 7, 11, 0, 14};
+    int minVal = arr[0], maxVal = arr[0], minIdx = 0, maxIdx = 0;
+    for(int i = 1; i < 15; i++) {
+        if(arr[i] < minVal) { minVal = arr[i]; minIdx = i; }
+        if(arr[i] > maxVal) { maxVal = arr[i]; maxIdx = i; }
+    }
+    cout << "Min: " << minVal << " at " << minIdx << "\nMax: " << maxVal << " at " << maxIdx << endl;
+}
+
+void task3() {
+    int arr[20] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
+    int even = 0, odd = 0;
+    for(int i = 0; i < 20; i++) {
+        if(arr[i] % 2 == 0) even++; else odd++;
+    }
+    cout << "Even: " << even << ", Odd: " << odd << endl;
+}
+
+void task4() {
+    int arr[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    for(int i = 0; i < 5; i++) swap(arr[i], arr[9-i]);
+    for(int x : arr) cout << x << " ";
+    cout << endl;
+}
+
+void task5() {
+    int arr[10] = {1, 2, 3, 2, 4, 2, 5, 6, 2, 7};
+    int X = 2, n = 10;
+    int j = 0;
+    for(int i = 0; i < n; i++) {
+        if(arr[i] != X) {
+            arr[j++] = arr[i];
+        }
+    }
+    for(int i = 0; i < j; i++) cout << arr[i] << " ";
+    cout << endl;
+}
