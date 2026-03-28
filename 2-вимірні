@@ -1,5 +1,5 @@
 #include <iostream>
-#include <iomanip> // для гарного виводу таблиці (setw)
+#include <iomanip>
 
 using namespace std;
 
@@ -57,8 +57,8 @@ int main() {
         int mainDiag = 0, sideDiag = 0;
 
         for (int i = 0; i < 4; i++) {
-            mainDiag += mat[i][i];            // Головна: i == j
-            sideDiag += mat[i][4 - 1 - i];    // Побічна: j = n - 1 - i
+            mainDiag += mat[i][i];   
+            sideDiag += mat[i][4 - 1 - i];
         }
         cout << "Golovna diagonal: " << mainDiag << endl;
         cout << "Pobichna diagonal: " << sideDiag << endl;
@@ -69,7 +69,7 @@ int main() {
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                trans[j][i] = mat[i][i]; // рядки стають стовпцями
+                trans[j][i] = mat[i][j];
             }
         }
         cout << "Transponovana matrytsya:\n";
